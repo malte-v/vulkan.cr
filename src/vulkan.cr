@@ -1,299 +1,306 @@
+macro make_version(major, minor, patch)
+  (({{major}} << 22) | ({{minor}} << 12) | {{patch}})
+end
+
 @[Link("vulkan")]
 lib Vk
-  AMD_BUFFER_MARKER                                   =     1
-  AMD_BUFFER_MARKER_SPEC_VERSION                      =     1
-  AMD_DRAW_INDIRECT_COUNT                             =     1
-  AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION                =     1
-  AMD_GCN_SHADER                                      =     1
-  AMD_GCN_SHADER_SPEC_VERSION                         =     1
-  AMD_GPU_SHADER_HALF_FLOAT                           =     1
-  AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION              =     1
-  AMD_GPU_SHADER_INT16                                =     1
-  AMD_GPU_SHADER_INT16_SPEC_VERSION                   =     1
-  AMD_MEMORY_OVERALLOCATION_BEHAVIOR                  =     1
-  AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION     =     1
-  AMD_MIXED_ATTACHMENT_SAMPLES                        =     1
-  AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION           =     1
-  AMD_NEGATIVE_VIEWPORT_HEIGHT                        =     1
-  AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION           =     1
-  AMD_RASTERIZATION_ORDER                             =     1
-  AMD_RASTERIZATION_ORDER_SPEC_VERSION                =     1
-  AMD_SHADER_BALLOT                                   =     1
-  AMD_SHADER_BALLOT_SPEC_VERSION                      =     1
-  AMD_SHADER_CORE_PROPERTIES                          =     1
-  AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION             =     1
-  AMD_SHADER_EXPLICIT_VERTEX_PARAMETER                =     1
-  AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION   =     1
-  AMD_SHADER_FRAGMENT_MASK                            =     1
-  AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION               =     1
-  AMD_SHADER_IMAGE_LOAD_STORE_LOD                     =     1
-  AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION        =     1
-  AMD_SHADER_INFO                                     =     1
-  AMD_SHADER_INFO_SPEC_VERSION                        =     1
-  AMD_SHADER_TRINARY_MINMAX                           =     1
-  AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION              =     1
-  AMD_TEXTURE_GATHER_BIAS_LOD                         =     1
-  AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION            =     1
-  EXT_ASTC_DECODE_MODE                                =     1
-  EXT_ASTC_DECODE_MODE_SPEC_VERSION                   =     1
-  EXT_BLEND_OPERATION_ADVANCED                        =     1
-  EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION           =     2
-  EXT_BUFFER_DEVICE_ADDRESS                           =     1
-  EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION              =     2
-  EXT_CALIBRATED_TIMESTAMPS                           =     1
-  EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION              =     1
-  EXT_CONDITIONAL_RENDERING                           =     1
-  EXT_CONDITIONAL_RENDERING_SPEC_VERSION              =     1
-  EXT_CONSERVATIVE_RASTERIZATION                      =     1
-  EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION         =     1
-  EXT_DEBUG_MARKER                                    =     1
-  EXT_DEBUG_MARKER_SPEC_VERSION                       =     4
-  EXT_DEBUG_REPORT                                    =     1
-  EXT_DEBUG_REPORT_SPEC_VERSION                       =     9
-  EXT_DEBUG_UTILS                                     =     1
-  EXT_DEBUG_UTILS_SPEC_VERSION                        =     1
-  EXT_DEPTH_CLIP_ENABLE                               =     1
-  EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION                  =     1
-  EXT_DEPTH_RANGE_UNRESTRICTED                        =     1
-  EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION           =     1
-  EXT_DESCRIPTOR_INDEXING                             =     1
-  EXT_DESCRIPTOR_INDEXING_SPEC_VERSION                =     2
-  EXT_DIRECT_MODE_DISPLAY                             =     1
-  EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION                =     1
-  EXT_DISCARD_RECTANGLES                              =     1
-  EXT_DISCARD_RECTANGLES_SPEC_VERSION                 =     1
-  EXT_DISPLAY_CONTROL                                 =     1
-  EXT_DISPLAY_CONTROL_SPEC_VERSION                    =     1
-  EXT_DISPLAY_SURFACE_COUNTER                         =     1
-  EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION            =     1
-  EXT_EXTERNAL_MEMORY_DMA_BUF                         =     1
-  EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION            =     1
-  EXT_EXTERNAL_MEMORY_HOST                            =     1
-  EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION               =     1
-  EXT_FILTER_CUBIC                                    =     1
-  EXT_FILTER_CUBIC_SPEC_VERSION                       =     1
-  EXT_FRAGMENT_DENSITY_MAP                            =     1
-  EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION               =     1
-  EXT_GLOBAL_PRIORITY                                 =     1
-  EXT_GLOBAL_PRIORITY_SPEC_VERSION                    =     2
-  EXT_HDR_METADATA                                    =     1
-  EXT_HDR_METADATA_SPEC_VERSION                       =     1
-  EXT_IMAGE_DRM_FORMAT_MODIFIER                       =     1
-  EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION          =     1
-  EXT_INLINE_UNIFORM_BLOCK                            =     1
-  EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION               =     1
-  EXT_MEMORY_BUDGET                                   =     1
-  EXT_MEMORY_BUDGET_SPEC_VERSION                      =     1
-  EXT_MEMORY_PRIORITY                                 =     1
-  EXT_MEMORY_PRIORITY_SPEC_VERSION                    =     1
-  EXT_PCI_BUS_INFO                                    =     1
-  EXT_PCI_BUS_INFO_SPEC_VERSION                       =     2
-  EXT_POST_DEPTH_COVERAGE                             =     1
-  EXT_POST_DEPTH_COVERAGE_SPEC_VERSION                =     1
-  EXT_QUEUE_FAMILY_FOREIGN                            =     1
-  EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION               =     1
-  EXT_SAMPLER_FILTER_MINMAX                           =     1
-  EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION              =     1
-  EXT_SAMPLE_LOCATIONS                                =     1
-  EXT_SAMPLE_LOCATIONS_SPEC_VERSION                   =     1
-  EXT_SCALAR_BLOCK_LAYOUT                             =     1
-  EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION                =     1
-  EXT_SEPARATE_STENCIL_USAGE                          =     1
-  EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION             =     1
-  EXT_SHADER_STENCIL_EXPORT                           =     1
-  EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION              =     1
-  EXT_SHADER_SUBGROUP_BALLOT                          =     1
-  EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION             =     1
-  EXT_SHADER_SUBGROUP_VOTE                            =     1
-  EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION               =     1
-  EXT_SHADER_VIEWPORT_INDEX_LAYER                     =     1
-  EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION        =     1
-  EXT_SWAPCHAIN_COLORSPACE                            =     1
-  EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION              =     3
-  EXT_TRANSFORM_FEEDBACK                              =     1
-  EXT_TRANSFORM_FEEDBACK_SPEC_VERSION                 =     1
-  EXT_VALIDATION_CACHE                                =     1
-  EXT_VALIDATION_CACHE_SPEC_VERSION                   =     1
-  EXT_VALIDATION_FEATURES                             =     1
-  EXT_VALIDATION_FEATURES_SPEC_VERSION                =     1
-  EXT_VALIDATION_FLAGS                                =     1
-  EXT_VALIDATION_FLAGS_SPEC_VERSION                   =     1
-  EXT_VERTEX_ATTRIBUTE_DIVISOR                        =     1
-  EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION           =     3
-  FALSE                                               = 0_u32
-  GOOGLE_DECORATE_STRING                              =     1
-  GOOGLE_DECORATE_STRING_SPEC_VERSION                 =     1
-  GOOGLE_DISPLAY_TIMING                               =     1
-  GOOGLE_DISPLAY_TIMING_SPEC_VERSION                  =     1
-  GOOGLE_HLSL_FUNCTIONALITY1                          =     1
-  GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION             =     1
-  HEADER_VERSION                                      =   101
-  IMG_FILTER_CUBIC                                    =     1
-  IMG_FILTER_CUBIC_SPEC_VERSION                       =     1
-  IMG_FORMAT_PVRTC                                    =     1
-  IMG_FORMAT_PVRTC_SPEC_VERSION                       =     1
-  KHR_16BIT_STORAGE                                   =     1
-  KHR_16BIT_STORAGE_SPEC_VERSION                      =     1
-  KHR_8BIT_STORAGE                                    =     1
-  KHR_8BIT_STORAGE_SPEC_VERSION                       =     1
-  KHR_BIND_MEMORY2                                    =     1
-  KHR_BIND_MEMORY_2_SPEC_VERSION                      =     1
-  KHR_CREATE_RENDERPASS2                              =     1
-  KHR_CREATE_RENDERPASS_2_SPEC_VERSION                =     1
-  KHR_DEDICATED_ALLOCATION                            =     1
-  KHR_DEDICATED_ALLOCATION_SPEC_VERSION               =     3
-  KHR_DEPTH_STENCIL_RESOLVE                           =     1
-  KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION              =     1
-  KHR_DESCRIPTOR_UPDATE_TEMPLATE                      =     1
-  KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION         =     1
-  KHR_DEVICE_GROUP                                    =     1
-  KHR_DEVICE_GROUP_CREATION                           =     1
-  KHR_DEVICE_GROUP_CREATION_SPEC_VERSION              =     1
-  KHR_DEVICE_GROUP_SPEC_VERSION                       =     3
-  KHR_DISPLAY                                         =     1
-  KHR_DISPLAY_SPEC_VERSION                            =    21
-  KHR_DISPLAY_SWAPCHAIN                               =     1
-  KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION                  =     9
-  KHR_DRAW_INDIRECT_COUNT                             =     1
-  KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION                =     1
-  KHR_DRIVER_PROPERTIES                               =     1
-  KHR_DRIVER_PROPERTIES_SPEC_VERSION                  =     1
-  KHR_EXTERNAL_FENCE                                  =     1
-  KHR_EXTERNAL_FENCE_CAPABILITIES                     =     1
-  KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION        =     1
-  KHR_EXTERNAL_FENCE_FD                               =     1
-  KHR_EXTERNAL_FENCE_FD_SPEC_VERSION                  =     1
-  KHR_EXTERNAL_FENCE_SPEC_VERSION                     =     1
-  KHR_EXTERNAL_MEMORY                                 =     1
-  KHR_EXTERNAL_MEMORY_CAPABILITIES                    =     1
-  KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION       =     1
-  KHR_EXTERNAL_MEMORY_FD                              =     1
-  KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION                 =     1
-  KHR_EXTERNAL_MEMORY_SPEC_VERSION                    =     1
-  KHR_EXTERNAL_SEMAPHORE                              =     1
-  KHR_EXTERNAL_SEMAPHORE_CAPABILITIES                 =     1
-  KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION    =     1
-  KHR_EXTERNAL_SEMAPHORE_FD                           =     1
-  KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION              =     1
-  KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION                 =     1
-  KHR_GET_DISPLAY_PROPERTIES2                         =     1
-  KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION           =     1
-  KHR_GET_MEMORY_REQUIREMENTS2                        =     1
-  KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION          =     1
-  KHR_GET_PHYSICAL_DEVICE_PROPERTIES2                 =     1
-  KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION   =     1
-  KHR_GET_SURFACE_CAPABILITIES2                       =     1
-  KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION         =     1
-  KHR_IMAGE_FORMAT_LIST                               =     1
-  KHR_IMAGE_FORMAT_LIST_SPEC_VERSION                  =     1
-  KHR_INCREMENTAL_PRESENT                             =     1
-  KHR_INCREMENTAL_PRESENT_SPEC_VERSION                =     1
-  KHR_MAINTENANCE1                                    =     1
-  KHR_MAINTENANCE1_SPEC_VERSION                       =     2
-  KHR_MAINTENANCE2                                    =     1
-  KHR_MAINTENANCE2_SPEC_VERSION                       =     1
-  KHR_MAINTENANCE3                                    =     1
-  KHR_MAINTENANCE3_SPEC_VERSION                       =     1
-  KHR_MULTIVIEW                                       =     1
-  KHR_MULTIVIEW_SPEC_VERSION                          =     1
-  KHR_PUSH_DESCRIPTOR                                 =     1
-  KHR_PUSH_DESCRIPTOR_SPEC_VERSION                    =     2
-  KHR_RELAXED_BLOCK_LAYOUT                            =     1
-  KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION               =     1
-  KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE                    =     1
-  KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION       =     1
-  KHR_SAMPLER_YCBCR_CONVERSION                        =     1
-  KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION           =     1
-  KHR_SHADER_ATOMIC_INT64                             =     1
-  KHR_SHADER_ATOMIC_INT64_SPEC_VERSION                =     1
-  KHR_SHADER_DRAW_PARAMETERS                          =     1
-  KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION             =     1
-  KHR_SHADER_FLOAT16_INT8                             =     1
-  KHR_SHADER_FLOAT16_INT8_SPEC_VERSION                =     1
-  KHR_SHADER_FLOAT_CONTROLS                           =     1
-  KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION              =     1
-  KHR_SHARED_PRESENTABLE_IMAGE                        =     1
-  KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION           =     1
-  KHR_STORAGE_BUFFER_STORAGE_CLASS                    =     1
-  KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION       =     1
-  KHR_SURFACE                                         =     1
-  KHR_SURFACE_SPEC_VERSION                            =    25
-  KHR_SWAPCHAIN                                       =     1
-  KHR_SWAPCHAIN_MUTABLE_FORMAT                        =     1
-  KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION           =     1
-  KHR_SWAPCHAIN_SPEC_VERSION                          =    70
-  KHR_VARIABLE_POINTERS                               =     1
-  KHR_VARIABLE_POINTERS_SPEC_VERSION                  =     1
-  KHR_VULKAN_MEMORY_MODEL                             =     1
-  KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION                =     3
-  LUID_SIZE                                           =     8
-  MAX_DESCRIPTION_SIZE                                =   256
-  MAX_DEVICE_GROUP_SIZE                               =    32
-  MAX_DRIVER_INFO_SIZE_KHR                            =   256
-  MAX_DRIVER_NAME_SIZE_KHR                            =   256
-  MAX_EXTENSION_NAME_SIZE                             =   256
-  MAX_MEMORY_HEAPS                                    =    16
-  MAX_MEMORY_TYPES                                    =    32
-  MAX_PHYSICAL_DEVICE_NAME_SIZE                       =   256
-  NULL_HANDLE                                         =     0
-  NVX_DEVICE_GENERATED_COMMANDS                       =     1
-  NVX_DEVICE_GENERATED_COMMANDS_SPEC_VERSION          =     3
-  NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES                   =     1
-  NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION      =     1
-  NV_CLIP_SPACE_W_SCALING                             =     1
-  NV_CLIP_SPACE_W_SCALING_SPEC_VERSION                =     1
-  NV_COMPUTE_SHADER_DERIVATIVES                       =     1
-  NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION          =     1
-  NV_COOPERATIVE_MATRIX                               =     1
-  NV_COOPERATIVE_MATRIX_SPEC_VERSION                  =     1
-  NV_CORNER_SAMPLED_IMAGE                             =     1
-  NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION                =     2
-  NV_DEDICATED_ALLOCATION                             =     1
-  NV_DEDICATED_ALLOCATION_IMAGE_ALIASING              =     1
-  NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION =     1
-  NV_DEDICATED_ALLOCATION_SPEC_VERSION                =     1
-  NV_DEVICE_DIAGNOSTIC_CHECKPOINTS                    =     1
-  NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION       =     2
-  NV_EXTERNAL_MEMORY                                  =     1
-  NV_EXTERNAL_MEMORY_CAPABILITIES                     =     1
-  NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION        =     1
-  NV_EXTERNAL_MEMORY_SPEC_VERSION                     =     1
-  NV_FILL_RECTANGLE                                   =     1
-  NV_FILL_RECTANGLE_SPEC_VERSION                      =     1
-  NV_FRAGMENT_COVERAGE_TO_COLOR                       =     1
-  NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION          =     1
-  NV_FRAGMENT_SHADER_BARYCENTRIC                      =     1
-  NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION         =     1
-  NV_FRAMEBUFFER_MIXED_SAMPLES                        =     1
-  NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION           =     1
-  NV_GEOMETRY_SHADER_PASSTHROUGH                      =     1
-  NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION         =     1
-  NV_GLSL_SHADER                                      =     1
-  NV_GLSL_SHADER_SPEC_VERSION                         =     1
-  NV_MESH_SHADER                                      =     1
-  NV_MESH_SHADER_SPEC_VERSION                         =     1
-  NV_RAY_TRACING                                      =     1
-  NV_RAY_TRACING_SPEC_VERSION                         =     3
-  NV_REPRESENTATIVE_FRAGMENT_TEST                     =     1
-  NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION        =     1
-  NV_SAMPLE_MASK_OVERRIDE_COVERAGE                    =     1
-  NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION       =     1
-  NV_SCISSOR_EXCLUSIVE                                =     1
-  NV_SCISSOR_EXCLUSIVE_SPEC_VERSION                   =     1
-  NV_SHADER_IMAGE_FOOTPRINT                           =     1
-  NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION              =     1
-  NV_SHADER_SUBGROUP_PARTITIONED                      =     1
-  NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION         =     1
-  NV_SHADING_RATE_IMAGE                               =     1
-  NV_SHADING_RATE_IMAGE_SPEC_VERSION                  =     3
-  NV_VIEWPORT_ARRAY2                                  =     1
-  NV_VIEWPORT_ARRAY2_SPEC_VERSION                     =     1
-  NV_VIEWPORT_SWIZZLE                                 =     1
-  NV_VIEWPORT_SWIZZLE_SPEC_VERSION                    =     1
-  TRUE                                                = 1_u32
-  UUID_SIZE                                           =    16
-  VERSION_1_0                                         =     1
-  VERSION_1_1                                         =     1
+  API_VERSION_1_0 = make_version(1, 0, 0)
+
+  AMD_BUFFER_MARKER                                   =   1
+  AMD_BUFFER_MARKER_SPEC_VERSION                      =   1
+  AMD_DRAW_INDIRECT_COUNT                             =   1
+  AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION                =   1
+  AMD_GCN_SHADER                                      =   1
+  AMD_GCN_SHADER_SPEC_VERSION                         =   1
+  AMD_GPU_SHADER_HALF_FLOAT                           =   1
+  AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION              =   1
+  AMD_GPU_SHADER_INT16                                =   1
+  AMD_GPU_SHADER_INT16_SPEC_VERSION                   =   1
+  AMD_MEMORY_OVERALLOCATION_BEHAVIOR                  =   1
+  AMD_MEMORY_OVERALLOCATION_BEHAVIOR_SPEC_VERSION     =   1
+  AMD_MIXED_ATTACHMENT_SAMPLES                        =   1
+  AMD_MIXED_ATTACHMENT_SAMPLES_SPEC_VERSION           =   1
+  AMD_NEGATIVE_VIEWPORT_HEIGHT                        =   1
+  AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION           =   1
+  AMD_RASTERIZATION_ORDER                             =   1
+  AMD_RASTERIZATION_ORDER_SPEC_VERSION                =   1
+  AMD_SHADER_BALLOT                                   =   1
+  AMD_SHADER_BALLOT_SPEC_VERSION                      =   1
+  AMD_SHADER_CORE_PROPERTIES                          =   1
+  AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION             =   1
+  AMD_SHADER_EXPLICIT_VERTEX_PARAMETER                =   1
+  AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION   =   1
+  AMD_SHADER_FRAGMENT_MASK                            =   1
+  AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION               =   1
+  AMD_SHADER_IMAGE_LOAD_STORE_LOD                     =   1
+  AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION        =   1
+  AMD_SHADER_INFO                                     =   1
+  AMD_SHADER_INFO_SPEC_VERSION                        =   1
+  AMD_SHADER_TRINARY_MINMAX                           =   1
+  AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION              =   1
+  AMD_TEXTURE_GATHER_BIAS_LOD                         =   1
+  AMD_TEXTURE_GATHER_BIAS_LOD_SPEC_VERSION            =   1
+  EXT_ASTC_DECODE_MODE                                =   1
+  EXT_ASTC_DECODE_MODE_SPEC_VERSION                   =   1
+  EXT_BLEND_OPERATION_ADVANCED                        =   1
+  EXT_BLEND_OPERATION_ADVANCED_SPEC_VERSION           =   2
+  EXT_BUFFER_DEVICE_ADDRESS                           =   1
+  EXT_BUFFER_DEVICE_ADDRESS_SPEC_VERSION              =   2
+  EXT_CALIBRATED_TIMESTAMPS                           =   1
+  EXT_CALIBRATED_TIMESTAMPS_SPEC_VERSION              =   1
+  EXT_CONDITIONAL_RENDERING                           =   1
+  EXT_CONDITIONAL_RENDERING_SPEC_VERSION              =   1
+  EXT_CONSERVATIVE_RASTERIZATION                      =   1
+  EXT_CONSERVATIVE_RASTERIZATION_SPEC_VERSION         =   1
+  EXT_DEBUG_MARKER                                    =   1
+  EXT_DEBUG_MARKER_SPEC_VERSION                       =   4
+  EXT_DEBUG_REPORT                                    =   1
+  EXT_DEBUG_REPORT_SPEC_VERSION                       =   9
+  EXT_DEBUG_UTILS                                     =   1
+  EXT_DEBUG_UTILS_SPEC_VERSION                        =   1
+  EXT_DEPTH_CLIP_ENABLE                               =   1
+  EXT_DEPTH_CLIP_ENABLE_SPEC_VERSION                  =   1
+  EXT_DEPTH_RANGE_UNRESTRICTED                        =   1
+  EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION           =   1
+  EXT_DESCRIPTOR_INDEXING                             =   1
+  EXT_DESCRIPTOR_INDEXING_SPEC_VERSION                =   2
+  EXT_DIRECT_MODE_DISPLAY                             =   1
+  EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION                =   1
+  EXT_DISCARD_RECTANGLES                              =   1
+  EXT_DISCARD_RECTANGLES_SPEC_VERSION                 =   1
+  EXT_DISPLAY_CONTROL                                 =   1
+  EXT_DISPLAY_CONTROL_SPEC_VERSION                    =   1
+  EXT_DISPLAY_SURFACE_COUNTER                         =   1
+  EXT_DISPLAY_SURFACE_COUNTER_SPEC_VERSION            =   1
+  EXT_EXTERNAL_MEMORY_DMA_BUF                         =   1
+  EXT_EXTERNAL_MEMORY_DMA_BUF_SPEC_VERSION            =   1
+  EXT_EXTERNAL_MEMORY_HOST                            =   1
+  EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION               =   1
+  EXT_FILTER_CUBIC                                    =   1
+  EXT_FILTER_CUBIC_SPEC_VERSION                       =   1
+  EXT_FRAGMENT_DENSITY_MAP                            =   1
+  EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION               =   1
+  EXT_GLOBAL_PRIORITY                                 =   1
+  EXT_GLOBAL_PRIORITY_SPEC_VERSION                    =   2
+  EXT_HDR_METADATA                                    =   1
+  EXT_HDR_METADATA_SPEC_VERSION                       =   1
+  EXT_IMAGE_DRM_FORMAT_MODIFIER                       =   1
+  EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION          =   1
+  EXT_INLINE_UNIFORM_BLOCK                            =   1
+  EXT_INLINE_UNIFORM_BLOCK_SPEC_VERSION               =   1
+  EXT_MEMORY_BUDGET                                   =   1
+  EXT_MEMORY_BUDGET_SPEC_VERSION                      =   1
+  EXT_MEMORY_PRIORITY                                 =   1
+  EXT_MEMORY_PRIORITY_SPEC_VERSION                    =   1
+  EXT_PCI_BUS_INFO                                    =   1
+  EXT_PCI_BUS_INFO_SPEC_VERSION                       =   2
+  EXT_POST_DEPTH_COVERAGE                             =   1
+  EXT_POST_DEPTH_COVERAGE_SPEC_VERSION                =   1
+  EXT_QUEUE_FAMILY_FOREIGN                            =   1
+  EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION               =   1
+  EXT_SAMPLER_FILTER_MINMAX                           =   1
+  EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION              =   1
+  EXT_SAMPLE_LOCATIONS                                =   1
+  EXT_SAMPLE_LOCATIONS_SPEC_VERSION                   =   1
+  EXT_SCALAR_BLOCK_LAYOUT                             =   1
+  EXT_SCALAR_BLOCK_LAYOUT_SPEC_VERSION                =   1
+  EXT_SEPARATE_STENCIL_USAGE                          =   1
+  EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION             =   1
+  EXT_SHADER_STENCIL_EXPORT                           =   1
+  EXT_SHADER_STENCIL_EXPORT_SPEC_VERSION              =   1
+  EXT_SHADER_SUBGROUP_BALLOT                          =   1
+  EXT_SHADER_SUBGROUP_BALLOT_SPEC_VERSION             =   1
+  EXT_SHADER_SUBGROUP_VOTE                            =   1
+  EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION               =   1
+  EXT_SHADER_VIEWPORT_INDEX_LAYER                     =   1
+  EXT_SHADER_VIEWPORT_INDEX_LAYER_SPEC_VERSION        =   1
+  EXT_SWAPCHAIN_COLORSPACE                            =   1
+  EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION              =   3
+  EXT_TRANSFORM_FEEDBACK                              =   1
+  EXT_TRANSFORM_FEEDBACK_SPEC_VERSION                 =   1
+  EXT_VALIDATION_CACHE                                =   1
+  EXT_VALIDATION_CACHE_SPEC_VERSION                   =   1
+  EXT_VALIDATION_FEATURES                             =   1
+  EXT_VALIDATION_FEATURES_SPEC_VERSION                =   1
+  EXT_VALIDATION_FLAGS                                =   1
+  EXT_VALIDATION_FLAGS_SPEC_VERSION                   =   1
+  EXT_VERTEX_ATTRIBUTE_DIVISOR                        =   1
+  EXT_VERTEX_ATTRIBUTE_DIVISOR_SPEC_VERSION           =   3
+  FALSE                                               =   0
+  GOOGLE_DECORATE_STRING                              =   1
+  GOOGLE_DECORATE_STRING_SPEC_VERSION                 =   1
+  GOOGLE_DISPLAY_TIMING                               =   1
+  GOOGLE_DISPLAY_TIMING_SPEC_VERSION                  =   1
+  GOOGLE_HLSL_FUNCTIONALITY1                          =   1
+  GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION             =   1
+  HEADER_VERSION                                      = 101
+  IMG_FILTER_CUBIC                                    =   1
+  IMG_FILTER_CUBIC_SPEC_VERSION                       =   1
+  IMG_FORMAT_PVRTC                                    =   1
+  IMG_FORMAT_PVRTC_SPEC_VERSION                       =   1
+  KHR_16BIT_STORAGE                                   =   1
+  KHR_16BIT_STORAGE_SPEC_VERSION                      =   1
+  KHR_8BIT_STORAGE                                    =   1
+  KHR_8BIT_STORAGE_SPEC_VERSION                       =   1
+  KHR_BIND_MEMORY2                                    =   1
+  KHR_BIND_MEMORY_2_SPEC_VERSION                      =   1
+  KHR_CREATE_RENDERPASS2                              =   1
+  KHR_CREATE_RENDERPASS_2_SPEC_VERSION                =   1
+  KHR_DEDICATED_ALLOCATION                            =   1
+  KHR_DEDICATED_ALLOCATION_SPEC_VERSION               =   3
+  KHR_DEPTH_STENCIL_RESOLVE                           =   1
+  KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION              =   1
+  KHR_DESCRIPTOR_UPDATE_TEMPLATE                      =   1
+  KHR_DESCRIPTOR_UPDATE_TEMPLATE_SPEC_VERSION         =   1
+  KHR_DEVICE_GROUP                                    =   1
+  KHR_DEVICE_GROUP_CREATION                           =   1
+  KHR_DEVICE_GROUP_CREATION_SPEC_VERSION              =   1
+  KHR_DEVICE_GROUP_SPEC_VERSION                       =   3
+  KHR_DISPLAY                                         =   1
+  KHR_DISPLAY_SPEC_VERSION                            =  21
+  KHR_DISPLAY_SWAPCHAIN                               =   1
+  KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION                  =   9
+  KHR_DRAW_INDIRECT_COUNT                             =   1
+  KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION                =   1
+  KHR_DRIVER_PROPERTIES                               =   1
+  KHR_DRIVER_PROPERTIES_SPEC_VERSION                  =   1
+  KHR_EXTERNAL_FENCE                                  =   1
+  KHR_EXTERNAL_FENCE_CAPABILITIES                     =   1
+  KHR_EXTERNAL_FENCE_CAPABILITIES_SPEC_VERSION        =   1
+  KHR_EXTERNAL_FENCE_FD                               =   1
+  KHR_EXTERNAL_FENCE_FD_SPEC_VERSION                  =   1
+  KHR_EXTERNAL_FENCE_SPEC_VERSION                     =   1
+  KHR_EXTERNAL_MEMORY                                 =   1
+  KHR_EXTERNAL_MEMORY_CAPABILITIES                    =   1
+  KHR_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION       =   1
+  KHR_EXTERNAL_MEMORY_FD                              =   1
+  KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION                 =   1
+  KHR_EXTERNAL_MEMORY_SPEC_VERSION                    =   1
+  KHR_EXTERNAL_SEMAPHORE                              =   1
+  KHR_EXTERNAL_SEMAPHORE_CAPABILITIES                 =   1
+  KHR_EXTERNAL_SEMAPHORE_CAPABILITIES_SPEC_VERSION    =   1
+  KHR_EXTERNAL_SEMAPHORE_FD                           =   1
+  KHR_EXTERNAL_SEMAPHORE_FD_SPEC_VERSION              =   1
+  KHR_EXTERNAL_SEMAPHORE_SPEC_VERSION                 =   1
+  KHR_GET_DISPLAY_PROPERTIES2                         =   1
+  KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION           =   1
+  KHR_GET_MEMORY_REQUIREMENTS2                        =   1
+  KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION          =   1
+  KHR_GET_PHYSICAL_DEVICE_PROPERTIES2                 =   1
+  KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION   =   1
+  KHR_GET_SURFACE_CAPABILITIES2                       =   1
+  KHR_GET_SURFACE_CAPABILITIES_2_SPEC_VERSION         =   1
+  KHR_IMAGE_FORMAT_LIST                               =   1
+  KHR_IMAGE_FORMAT_LIST_SPEC_VERSION                  =   1
+  KHR_INCREMENTAL_PRESENT                             =   1
+  KHR_INCREMENTAL_PRESENT_SPEC_VERSION                =   1
+  KHR_MAINTENANCE1                                    =   1
+  KHR_MAINTENANCE1_SPEC_VERSION                       =   2
+  KHR_MAINTENANCE2                                    =   1
+  KHR_MAINTENANCE2_SPEC_VERSION                       =   1
+  KHR_MAINTENANCE3                                    =   1
+  KHR_MAINTENANCE3_SPEC_VERSION                       =   1
+  KHR_MULTIVIEW                                       =   1
+  KHR_MULTIVIEW_SPEC_VERSION                          =   1
+  KHR_PUSH_DESCRIPTOR                                 =   1
+  KHR_PUSH_DESCRIPTOR_SPEC_VERSION                    =   2
+  KHR_RELAXED_BLOCK_LAYOUT                            =   1
+  KHR_RELAXED_BLOCK_LAYOUT_SPEC_VERSION               =   1
+  KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE                    =   1
+  KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION       =   1
+  KHR_SAMPLER_YCBCR_CONVERSION                        =   1
+  KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION           =   1
+  KHR_SHADER_ATOMIC_INT64                             =   1
+  KHR_SHADER_ATOMIC_INT64_SPEC_VERSION                =   1
+  KHR_SHADER_DRAW_PARAMETERS                          =   1
+  KHR_SHADER_DRAW_PARAMETERS_SPEC_VERSION             =   1
+  KHR_SHADER_FLOAT16_INT8                             =   1
+  KHR_SHADER_FLOAT16_INT8_SPEC_VERSION                =   1
+  KHR_SHADER_FLOAT_CONTROLS                           =   1
+  KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION              =   1
+  KHR_SHARED_PRESENTABLE_IMAGE                        =   1
+  KHR_SHARED_PRESENTABLE_IMAGE_SPEC_VERSION           =   1
+  KHR_STORAGE_BUFFER_STORAGE_CLASS                    =   1
+  KHR_STORAGE_BUFFER_STORAGE_CLASS_SPEC_VERSION       =   1
+  KHR_SURFACE                                         =   1
+  KHR_SURFACE_SPEC_VERSION                            =  25
+  KHR_SWAPCHAIN                                       =   1
+  KHR_SWAPCHAIN_MUTABLE_FORMAT                        =   1
+  KHR_SWAPCHAIN_MUTABLE_FORMAT_SPEC_VERSION           =   1
+  KHR_SWAPCHAIN_SPEC_VERSION                          =  70
+  KHR_VARIABLE_POINTERS                               =   1
+  KHR_VARIABLE_POINTERS_SPEC_VERSION                  =   1
+  KHR_VULKAN_MEMORY_MODEL                             =   1
+  KHR_VULKAN_MEMORY_MODEL_SPEC_VERSION                =   3
+  LUID_SIZE                                           =   8
+  MAX_DESCRIPTION_SIZE                                = 256
+  MAX_DEVICE_GROUP_SIZE                               =  32
+  MAX_DRIVER_INFO_SIZE_KHR                            = 256
+  MAX_DRIVER_NAME_SIZE_KHR                            = 256
+  MAX_EXTENSION_NAME_SIZE                             = 256
+  MAX_MEMORY_HEAPS                                    =  16
+  MAX_MEMORY_TYPES                                    =  32
+  MAX_PHYSICAL_DEVICE_NAME_SIZE                       = 256
+  NULL_HANDLE                                         =   0
+  NVX_DEVICE_GENERATED_COMMANDS                       =   1
+  NVX_DEVICE_GENERATED_COMMANDS_SPEC_VERSION          =   3
+  NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES                   =   1
+  NVX_MULTIVIEW_PER_VIEW_ATTRIBUTES_SPEC_VERSION      =   1
+  NV_CLIP_SPACE_W_SCALING                             =   1
+  NV_CLIP_SPACE_W_SCALING_SPEC_VERSION                =   1
+  NV_COMPUTE_SHADER_DERIVATIVES                       =   1
+  NV_COMPUTE_SHADER_DERIVATIVES_SPEC_VERSION          =   1
+  NV_COOPERATIVE_MATRIX                               =   1
+  NV_COOPERATIVE_MATRIX_SPEC_VERSION                  =   1
+  NV_CORNER_SAMPLED_IMAGE                             =   1
+  NV_CORNER_SAMPLED_IMAGE_SPEC_VERSION                =   2
+  NV_DEDICATED_ALLOCATION                             =   1
+  NV_DEDICATED_ALLOCATION_IMAGE_ALIASING              =   1
+  NV_DEDICATED_ALLOCATION_IMAGE_ALIASING_SPEC_VERSION =   1
+  NV_DEDICATED_ALLOCATION_SPEC_VERSION                =   1
+  NV_DEVICE_DIAGNOSTIC_CHECKPOINTS                    =   1
+  NV_DEVICE_DIAGNOSTIC_CHECKPOINTS_SPEC_VERSION       =   2
+  NV_EXTERNAL_MEMORY                                  =   1
+  NV_EXTERNAL_MEMORY_CAPABILITIES                     =   1
+  NV_EXTERNAL_MEMORY_CAPABILITIES_SPEC_VERSION        =   1
+  NV_EXTERNAL_MEMORY_SPEC_VERSION                     =   1
+  NV_FILL_RECTANGLE                                   =   1
+  NV_FILL_RECTANGLE_SPEC_VERSION                      =   1
+  NV_FRAGMENT_COVERAGE_TO_COLOR                       =   1
+  NV_FRAGMENT_COVERAGE_TO_COLOR_SPEC_VERSION          =   1
+  NV_FRAGMENT_SHADER_BARYCENTRIC                      =   1
+  NV_FRAGMENT_SHADER_BARYCENTRIC_SPEC_VERSION         =   1
+  NV_FRAMEBUFFER_MIXED_SAMPLES                        =   1
+  NV_FRAMEBUFFER_MIXED_SAMPLES_SPEC_VERSION           =   1
+  NV_GEOMETRY_SHADER_PASSTHROUGH                      =   1
+  NV_GEOMETRY_SHADER_PASSTHROUGH_SPEC_VERSION         =   1
+  NV_GLSL_SHADER                                      =   1
+  NV_GLSL_SHADER_SPEC_VERSION                         =   1
+  NV_MESH_SHADER                                      =   1
+  NV_MESH_SHADER_SPEC_VERSION                         =   1
+  NV_RAY_TRACING                                      =   1
+  NV_RAY_TRACING_SPEC_VERSION                         =   3
+  NV_REPRESENTATIVE_FRAGMENT_TEST                     =   1
+  NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION        =   1
+  NV_SAMPLE_MASK_OVERRIDE_COVERAGE                    =   1
+  NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION       =   1
+  NV_SCISSOR_EXCLUSIVE                                =   1
+  NV_SCISSOR_EXCLUSIVE_SPEC_VERSION                   =   1
+  NV_SHADER_IMAGE_FOOTPRINT                           =   1
+  NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION              =   1
+  NV_SHADER_SUBGROUP_PARTITIONED                      =   1
+  NV_SHADER_SUBGROUP_PARTITIONED_SPEC_VERSION         =   1
+  NV_SHADING_RATE_IMAGE                               =   1
+  NV_SHADING_RATE_IMAGE_SPEC_VERSION                  =   3
+  NV_VIEWPORT_ARRAY2                                  =   1
+  NV_VIEWPORT_ARRAY2_SPEC_VERSION                     =   1
+  NV_VIEWPORT_SWIZZLE                                 =   1
+  NV_VIEWPORT_SWIZZLE_SPEC_VERSION                    =   1
+  SUBPASS_EXTERNAL                                    =   0
+  TRUE                                                =   1
+  UUID_SIZE                                           =  16
+  VERSION_1_0                                         =   1
+  VERSION_1_1                                         =   1
 
   alias PfnAllocationFunction = (Void*, LibC::SizeT, LibC::SizeT, SystemAllocationScope -> Void*)
   alias PfnDebugReportCallbackEXT = (DebugReportFlagsEXT, DebugReportObjectTypeEXT, UInt64, LibC::SizeT, Int32, LibC::Char*, LibC::Char*, Void* -> Bool32)
@@ -464,7 +471,7 @@ lib Vk
     RangeSizeNV   =          2
     MaxEnumNV     = 2147483647
   end
-  enum AccessFlagBits
+  enum AccessFlagBits : UInt32
     IndirectCommandReadBit               =          1
     IndexReadBit                         =          2
     VertexAttributeReadBit               =          4
@@ -608,7 +615,7 @@ lib Vk
     RangeSize             =          6
     MaxEnum               = 2147483647
   end
-  enum BufferUsageFlagBits
+  enum BufferUsageFlagBits : UInt32
     TransferSrcBit             =          1
     TransferDstBit             =          2
     UniformTexelBufferBit      =          4
@@ -670,7 +677,7 @@ lib Vk
     RangeSize  =          2
     MaxEnum    = 2147483647
   end
-  enum CommandBufferUsageFlagBits
+  enum CommandBufferUsageFlagBits : UInt32
     OneTimeSubmitBit      =          1
     RenderPassContinueBit =          2
     SimultaneousUseBit    =          4
@@ -720,7 +727,7 @@ lib Vk
     RangeSizeNV  =         11
     MaxEnumNV    = 2147483647
   end
-  enum CompositeAlphaFlagBitsKHR
+  enum CompositeAlphaFlagBitsKHR : UInt32
     OpaqueBitKHR         =          1
     PreMultipliedBitKHR  =          2
     PostMultipliedBitKHR =          4
@@ -754,14 +761,14 @@ lib Vk
     RangeSizeNV  =          4
     MaxEnumNV    = 2147483647
   end
-  enum CullModeFlagBits
+  enum CullModeFlagBits : UInt32
     None            =          0
     FrontBit        =          1
     BackBit         =          2
     FrontAndBack    =          3
     FlagBitsMaxEnum = 2147483647
   end
-  enum ColorComponentFlagBits
+  enum ColorComponentFlagBits : UInt32
     RBit            =          1
     GBit            =          2
     BBit            =          4
@@ -815,14 +822,14 @@ lib Vk
     RangeSizeEXT                   =         34
     MaxEnumEXT                     = 2147483647
   end
-  enum DebugUtilsMessageSeverityFlagBitsEXT
+  enum DebugUtilsMessageSeverityFlagBitsEXT : UInt32
     VerboseBitEXT      =          1
     InfoBitEXT         =         16
     WarningBitEXT      =        256
     ErrorBitEXT        =       4096
     FlagBitsMaxEnumEXT = 2147483647
   end
-  enum DebugUtilsMessageTypeFlagBitsEXT
+  enum DebugUtilsMessageTypeFlagBitsEXT : UInt32
     GeneralBitEXT      =          1
     ValidationBitEXT   =          2
     PerformanceBitEXT  =          4
@@ -863,7 +870,7 @@ lib Vk
     DeviceEventTypeRangeSizeEXT      =          1
     DeviceEventTypeMaxEnumEXT        = 2147483647
   end
-  enum DeviceGroupPresentModeFlagBitsKHR
+  enum DeviceGroupPresentModeFlagBitsKHR : UInt32
     LocalBitKHR            =          1
     RemoteBitKHR           =          2
     SumBitKHR              =          4
@@ -885,7 +892,7 @@ lib Vk
     RangeSizeEXT     =          1
     MaxEnumEXT       = 2147483647
   end
-  enum DisplayPlaneAlphaFlagBitsKHR
+  enum DisplayPlaneAlphaFlagBitsKHR : UInt32
     OpaqueBitKHR                =          1
     GlobalBitKHR                =          2
     PerPixelBitKHR              =          4
@@ -938,7 +945,7 @@ lib Vk
     RangeSize                    =          9
     MaxEnum                      = 2147483647
   end
-  enum ExternalFenceHandleTypeFlagBits
+  enum ExternalFenceHandleTypeFlagBits : UInt32
     OpaqueFdBit          =          1
     OpaqueWin32Bit       =          2
     OpaqueWin32KmtBit    =          4
@@ -949,7 +956,7 @@ lib Vk
     SyncFdBitKHR         =          8
     FlagBitsMaxEnum      = 2147483647
   end
-  enum ExternalMemoryHandleTypeFlagBits
+  enum ExternalMemoryHandleTypeFlagBits : UInt32
     OpaqueFdBit                     =          1
     OpaqueWin32Bit                  =          2
     OpaqueWin32KmtBit               =          4
@@ -970,7 +977,7 @@ lib Vk
     D3D12ResourceBitKHR             =         64
     FlagBitsMaxEnum                 = 2147483647
   end
-  enum ExternalSemaphoreHandleTypeFlagBits
+  enum ExternalSemaphoreHandleTypeFlagBits : UInt32
     OpaqueFdBit          =          1
     OpaqueWin32Bit       =          2
     OpaqueWin32KmtBit    =          4
@@ -983,7 +990,7 @@ lib Vk
     SyncFdBitKHR         =         16
     FlagBitsMaxEnum      = 2147483647
   end
-  enum FenceCreateFlagBits
+  enum FenceCreateFlagBits : UInt32
     SignaledBit     =          1
     FlagBitsMaxEnum = 2147483647
   end
@@ -1280,7 +1287,7 @@ lib Vk
     RangeSizeNV  =          2
     MaxEnumNV    = 2147483647
   end
-  enum ImageAspectFlagBits
+  enum ImageAspectFlagBits : UInt32
     ColorBit           =          1
     DepthBit           =          2
     StencilBit         =          4
@@ -1338,7 +1345,7 @@ lib Vk
     RangeSize  =          3
     MaxEnum    = 2147483647
   end
-  enum ImageUsageFlagBits
+  enum ImageUsageFlagBits : UInt32
     TransferSrcBit            =          1
     TransferDstBit            =          2
     SampledBit                =          4
@@ -1423,7 +1430,7 @@ lib Vk
     RangeSizeAMD  =          3
     MaxEnumAMD    = 2147483647
   end
-  enum MemoryPropertyFlagBits
+  enum MemoryPropertyFlagBits : UInt32
     DeviceLocalBit     =          1
     HostVisibleBit     =          2
     HostCoherentBit    =          4
@@ -1509,7 +1516,7 @@ lib Vk
     RangeSize    =          2
     MaxEnum      = 2147483647
   end
-  enum PipelineStageFlagBits
+  enum PipelineStageFlagBits : UInt32
     TopOfPipeBit                    =          1
     DrawIndirectBit                 =          2
     VertexInputBit                  =          4
@@ -1598,7 +1605,7 @@ lib Vk
     RangeSize                            =          3
     MaxEnum                              = 2147483647
   end
-  enum QueueFlagBits
+  enum QueueFlagBits : UInt32
     GraphicsBit      =          1
     ComputeBit       =          2
     TransferBit      =          4
@@ -1633,7 +1640,7 @@ lib Vk
     RangeSizeNV          =          3
     MaxEnumNV            = 2147483647
   end
-  enum ResolveModeFlagBitsKHR
+  enum ResolveModeFlagBitsKHR : UInt32
     NoneKHR            =          0
     SampleZeroBitKHR   =          1
     AverageBitKHR      =          2
@@ -1680,7 +1687,7 @@ lib Vk
     ResultRangeSize                             =          18
     ResultMaxEnum                               =  2147483647
   end
-  enum SampleCountFlagBits
+  enum SampleCountFlagBits : UInt32
     Count1Bit            =          1
     Count2Bit            =          2
     Count4Bit            =          4
@@ -1763,7 +1770,7 @@ lib Vk
     RangeSizeAMD   =          3
     MaxEnumAMD     = 2147483647
   end
-  enum ShaderStageFlagBits
+  enum ShaderStageFlagBits : UInt32
     VertexBit                 =          1
     TessellationControlBit    =          2
     TessellationEvaluationBit =          4
@@ -2217,11 +2224,11 @@ lib Vk
     RangeSize               =          2
     MaxEnum                 = 2147483647
   end
-  enum SurfaceCounterFlagBitsEXT
+  enum SurfaceCounterFlagBitsEXT : UInt32
     VblankEXT          =          1
     FlagBitsMaxEnumEXT = 2147483647
   end
-  enum SurfaceTransformFlagBitsKHR
+  enum SurfaceTransformFlagBitsKHR : UInt32
     IdentityBitKHR                  =          1
     Rotate90BitKHR                  =          2
     Rotate180BitKHR                 =          4
@@ -5805,7 +5812,310 @@ lib Vk
   end
 end
 
-# ## @@instance must be set before using any of these functions! ###
+macro initialize_types_by_default(names)
+  {% for name in names %}
+    struct Vk::{{name}}
+      def initialize(@type = Vk::StructureType::{{name}})
+      end
+    end
+  {% end %}
+end
+
+# these can be found with /(?<=struct ).*(?=(\n.*type : StructureType))/
+initialize_types_by_default [
+  AccelerationStructureCreateInfoNV,
+  AccelerationStructureInfoNV,
+  AccelerationStructureMemoryRequirementsInfoNV,
+  AcquireNextImageInfoKHR,
+  ApplicationInfo,
+  AttachmentDescription2KHR,
+  AttachmentReference2KHR,
+  BaseInStructure,
+  BaseOutStructure,
+  BindAccelerationStructureMemoryInfoNV,
+  BindBufferMemoryDeviceGroupInfo,
+  BindBufferMemoryInfo,
+  BindImageMemoryDeviceGroupInfo,
+  BindImageMemoryInfo,
+  BindImageMemorySwapchainInfoKHR,
+  BindImagePlaneMemoryInfo,
+  BindSparseInfo,
+  BufferCreateInfo,
+  BufferDeviceAddressCreateInfoEXT,
+  BufferDeviceAddressInfoEXT,
+  BufferMemoryBarrier,
+  BufferMemoryRequirementsInfo2,
+  BufferViewCreateInfo,
+  CalibratedTimestampInfoEXT,
+  CheckpointDataNV,
+  CmdProcessCommandsInfoNVX,
+  CmdReserveSpaceForCommandsInfoNVX,
+  CommandBufferAllocateInfo,
+  CommandBufferBeginInfo,
+  CommandBufferInheritanceConditionalRenderingInfoEXT,
+  CommandBufferInheritanceInfo,
+  CommandPoolCreateInfo,
+  ComputePipelineCreateInfo,
+  ConditionalRenderingBeginInfoEXT,
+  CooperativeMatrixPropertiesNV,
+  CopyDescriptorSet,
+  DebugMarkerMarkerInfoEXT,
+  DebugMarkerObjectNameInfoEXT,
+  DebugMarkerObjectTagInfoEXT,
+  DebugReportCallbackCreateInfoEXT,
+  DebugUtilsLabelEXT,
+  DebugUtilsMessengerCallbackDataEXT,
+  DebugUtilsMessengerCreateInfoEXT,
+  DebugUtilsObjectNameInfoEXT,
+  DebugUtilsObjectTagInfoEXT,
+  DedicatedAllocationBufferCreateInfoNV,
+  DedicatedAllocationImageCreateInfoNV,
+  DedicatedAllocationMemoryAllocateInfoNV,
+  DescriptorPoolCreateInfo,
+  DescriptorPoolInlineUniformBlockCreateInfoEXT,
+  DescriptorSetAllocateInfo,
+  DescriptorSetLayoutBindingFlagsCreateInfoEXT,
+  DescriptorSetLayoutCreateInfo,
+  DescriptorSetLayoutSupport,
+  DescriptorSetVariableDescriptorCountAllocateInfoEXT,
+  DescriptorSetVariableDescriptorCountLayoutSupportEXT,
+  DescriptorUpdateTemplateCreateInfo,
+  DeviceCreateInfo,
+  DeviceEventInfoEXT,
+  DeviceGeneratedCommandsFeaturesNVX,
+  DeviceGeneratedCommandsLimitsNVX,
+  DeviceGroupBindSparseInfo,
+  DeviceGroupCommandBufferBeginInfo,
+  DeviceGroupDeviceCreateInfo,
+  DeviceGroupPresentCapabilitiesKHR,
+  DeviceGroupPresentInfoKHR,
+  DeviceGroupRenderPassBeginInfo,
+  DeviceGroupSubmitInfo,
+  DeviceGroupSwapchainCreateInfoKHR,
+  DeviceMemoryOverallocationCreateInfoAMD,
+  DeviceQueueCreateInfo,
+  DeviceQueueGlobalPriorityCreateInfoEXT,
+  DeviceQueueInfo2,
+  DisplayEventInfoEXT,
+  DisplayModeCreateInfoKHR,
+  DisplayModeProperties2KHR,
+  DisplayPlaneCapabilities2KHR,
+  DisplayPlaneInfo2KHR,
+  DisplayPlaneProperties2KHR,
+  DisplayPowerInfoEXT,
+  DisplayPresentInfoKHR,
+  DisplayProperties2KHR,
+  DisplaySurfaceCreateInfoKHR,
+  DrmFormatModifierPropertiesListEXT,
+  EventCreateInfo,
+  ExportFenceCreateInfo,
+  ExportMemoryAllocateInfo,
+  ExportMemoryAllocateInfoNV,
+  ExportSemaphoreCreateInfo,
+  ExternalBufferProperties,
+  ExternalFenceProperties,
+  ExternalImageFormatProperties,
+  ExternalMemoryBufferCreateInfo,
+  ExternalMemoryImageCreateInfo,
+  ExternalMemoryImageCreateInfoNV,
+  ExternalSemaphoreProperties,
+  FenceCreateInfo,
+  FenceGetFdInfoKHR,
+  FilterCubicImageViewImageFormatPropertiesEXT,
+  FormatProperties2,
+  FramebufferCreateInfo,
+  GeometryAabbnv,
+  GeometryNV,
+  GeometryTrianglesNV,
+  GraphicsPipelineCreateInfo,
+  HdrMetadataEXT,
+  ImageCreateInfo,
+  ImageDrmFormatModifierExplicitCreateInfoEXT,
+  ImageDrmFormatModifierListCreateInfoEXT,
+  ImageDrmFormatModifierPropertiesEXT,
+  ImageFormatListCreateInfoKHR,
+  ImageFormatProperties2,
+  ImageMemoryBarrier,
+  ImageMemoryRequirementsInfo2,
+  ImagePlaneMemoryRequirementsInfo,
+  ImageSparseMemoryRequirementsInfo2,
+  ImageStencilUsageCreateInfoEXT,
+  ImageSwapchainCreateInfoKHR,
+  ImageViewAstcDecodeModeEXT,
+  ImageViewCreateInfo,
+  ImageViewUsageCreateInfo,
+  ImportFenceFdInfoKHR,
+  ImportMemoryFdInfoKHR,
+  ImportMemoryHostPointerInfoEXT,
+  ImportSemaphoreFdInfoKHR,
+  IndirectCommandsLayoutCreateInfoNVX,
+  InstanceCreateInfo,
+  MappedMemoryRange,
+  MemoryAllocateFlagsInfo,
+  MemoryAllocateInfo,
+  MemoryBarrier,
+  MemoryDedicatedAllocateInfo,
+  MemoryDedicatedRequirements,
+  MemoryFdPropertiesKHR,
+  MemoryGetFdInfoKHR,
+  MemoryHostPointerPropertiesEXT,
+  MemoryPriorityAllocateInfoEXT,
+  MemoryRequirements2,
+  MultisamplePropertiesEXT,
+  ObjectTableCreateInfoNVX,
+  PhysicalDevice16BitStorageFeatures,
+  PhysicalDevice8BitStorageFeaturesKHR,
+  PhysicalDeviceAstcDecodeFeaturesEXT,
+  PhysicalDeviceBlendOperationAdvancedFeaturesEXT,
+  PhysicalDeviceBlendOperationAdvancedPropertiesEXT,
+  PhysicalDeviceBufferAddressFeaturesEXT,
+  PhysicalDeviceComputeShaderDerivativesFeaturesNV,
+  PhysicalDeviceConditionalRenderingFeaturesEXT,
+  PhysicalDeviceConservativeRasterizationPropertiesEXT,
+  PhysicalDeviceCooperativeMatrixFeaturesNV,
+  PhysicalDeviceCooperativeMatrixPropertiesNV,
+  PhysicalDeviceCornerSampledImageFeaturesNV,
+  PhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV,
+  PhysicalDeviceDepthClipEnableFeaturesEXT,
+  PhysicalDeviceDepthStencilResolvePropertiesKHR,
+  PhysicalDeviceDescriptorIndexingFeaturesEXT,
+  PhysicalDeviceDescriptorIndexingPropertiesEXT,
+  PhysicalDeviceDiscardRectanglePropertiesEXT,
+  PhysicalDeviceDriverPropertiesKHR,
+  PhysicalDeviceExclusiveScissorFeaturesNV,
+  PhysicalDeviceExternalBufferInfo,
+  PhysicalDeviceExternalFenceInfo,
+  PhysicalDeviceExternalImageFormatInfo,
+  PhysicalDeviceExternalMemoryHostPropertiesEXT,
+  PhysicalDeviceExternalSemaphoreInfo,
+  PhysicalDeviceFeatures2,
+  PhysicalDeviceFloat16Int8FeaturesKHR,
+  PhysicalDeviceFloatControlsPropertiesKHR,
+  PhysicalDeviceFragmentDensityMapFeaturesEXT,
+  PhysicalDeviceFragmentDensityMapPropertiesEXT,
+  PhysicalDeviceFragmentShaderBarycentricFeaturesNV,
+  PhysicalDeviceGroupProperties,
+  PhysicalDeviceIdProperties,
+  PhysicalDeviceImageDrmFormatModifierInfoEXT,
+  PhysicalDeviceImageFormatInfo2,
+  PhysicalDeviceImageViewImageFormatInfoEXT,
+  PhysicalDeviceInlineUniformBlockFeaturesEXT,
+  PhysicalDeviceInlineUniformBlockPropertiesEXT,
+  PhysicalDeviceMaintenance3Properties,
+  PhysicalDeviceMemoryBudgetPropertiesEXT,
+  PhysicalDeviceMemoryPriorityFeaturesEXT,
+  PhysicalDeviceMemoryProperties2,
+  PhysicalDeviceMeshShaderFeaturesNV,
+  PhysicalDeviceMeshShaderPropertiesNV,
+  PhysicalDeviceMultiviewFeatures,
+  PhysicalDeviceMultiviewPerViewAttributesPropertiesNVX,
+  PhysicalDeviceMultiviewProperties,
+  PhysicalDevicePciBusInfoPropertiesEXT,
+  PhysicalDevicePointClippingProperties,
+  PhysicalDeviceProperties2,
+  PhysicalDeviceProtectedMemoryFeatures,
+  PhysicalDeviceProtectedMemoryProperties,
+  PhysicalDevicePushDescriptorPropertiesKHR,
+  PhysicalDeviceRayTracingPropertiesNV,
+  PhysicalDeviceRepresentativeFragmentTestFeaturesNV,
+  PhysicalDeviceSampleLocationsPropertiesEXT,
+  PhysicalDeviceSamplerFilterMinmaxPropertiesEXT,
+  PhysicalDeviceSamplerYcbcrConversionFeatures,
+  PhysicalDeviceScalarBlockLayoutFeaturesEXT,
+  PhysicalDeviceShaderAtomicInt64FeaturesKHR,
+  PhysicalDeviceShaderCorePropertiesAMD,
+  PhysicalDeviceShaderDrawParameterFeatures,
+  PhysicalDeviceShaderImageFootprintFeaturesNV,
+  PhysicalDeviceShadingRateImageFeaturesNV,
+  PhysicalDeviceShadingRateImagePropertiesNV,
+  PhysicalDeviceSparseImageFormatInfo2,
+  PhysicalDeviceSubgroupProperties,
+  PhysicalDeviceSurfaceInfo2KHR,
+  PhysicalDeviceTransformFeedbackFeaturesEXT,
+  PhysicalDeviceTransformFeedbackPropertiesEXT,
+  PhysicalDeviceVariablePointerFeatures,
+  PhysicalDeviceVertexAttributeDivisorFeaturesEXT,
+  PhysicalDeviceVertexAttributeDivisorPropertiesEXT,
+  PhysicalDeviceVulkanMemoryModelFeaturesKHR,
+  PipelineCacheCreateInfo,
+  PipelineColorBlendAdvancedStateCreateInfoEXT,
+  PipelineColorBlendStateCreateInfo,
+  PipelineCoverageModulationStateCreateInfoNV,
+  PipelineCoverageToColorStateCreateInfoNV,
+  PipelineDepthStencilStateCreateInfo,
+  PipelineDiscardRectangleStateCreateInfoEXT,
+  PipelineDynamicStateCreateInfo,
+  PipelineInputAssemblyStateCreateInfo,
+  PipelineLayoutCreateInfo,
+  PipelineMultisampleStateCreateInfo,
+  PipelineRasterizationConservativeStateCreateInfoEXT,
+  PipelineRasterizationDepthClipStateCreateInfoEXT,
+  PipelineRasterizationStateCreateInfo,
+  PipelineRasterizationStateRasterizationOrderAMD,
+  PipelineRasterizationStateStreamCreateInfoEXT,
+  PipelineRepresentativeFragmentTestStateCreateInfoNV,
+  PipelineSampleLocationsStateCreateInfoEXT,
+  PipelineShaderStageCreateInfo,
+  PipelineTessellationDomainOriginStateCreateInfo,
+  PipelineTessellationStateCreateInfo,
+  PipelineVertexInputDivisorStateCreateInfoEXT,
+  PipelineVertexInputStateCreateInfo,
+  PipelineViewportCoarseSampleOrderStateCreateInfoNV,
+  PipelineViewportExclusiveScissorStateCreateInfoNV,
+  PipelineViewportShadingRateImageStateCreateInfoNV,
+  PipelineViewportStateCreateInfo,
+  PipelineViewportSwizzleStateCreateInfoNV,
+  PipelineViewportWScalingStateCreateInfoNV,
+  PresentInfoKHR,
+  PresentRegionsKHR,
+  PresentTimesInfoGoogle,
+  ProtectedSubmitInfo,
+  QueryPoolCreateInfo,
+  QueueFamilyCheckpointPropertiesNV,
+  QueueFamilyProperties2,
+  RayTracingPipelineCreateInfoNV,
+  RayTracingShaderGroupCreateInfoNV,
+  RenderPassBeginInfo,
+  RenderPassCreateInfo,
+  RenderPassCreateInfo2KHR,
+  RenderPassFragmentDensityMapCreateInfoEXT,
+  RenderPassInputAttachmentAspectCreateInfo,
+  RenderPassMultiviewCreateInfo,
+  RenderPassSampleLocationsBeginInfoEXT,
+  SampleLocationsInfoEXT,
+  SamplerCreateInfo,
+  SamplerReductionModeCreateInfoEXT,
+  SamplerYcbcrConversionCreateInfo,
+  SamplerYcbcrConversionImageFormatProperties,
+  SamplerYcbcrConversionInfo,
+  SemaphoreCreateInfo,
+  SemaphoreGetFdInfoKHR,
+  ShaderModuleCreateInfo,
+  ShaderModuleValidationCacheCreateInfoEXT,
+  SharedPresentSurfaceCapabilitiesKHR,
+  SparseImageFormatProperties2,
+  SparseImageMemoryRequirements2,
+  SubmitInfo,
+  SubpassBeginInfoKHR,
+  SubpassDependency2KHR,
+  SubpassDescription2KHR,
+  SubpassDescriptionDepthStencilResolveKHR,
+  SubpassEndInfoKHR,
+  SurfaceCapabilities2EXT,
+  SurfaceCapabilities2KHR,
+  SurfaceFormat2KHR,
+  SwapchainCounterCreateInfoEXT,
+  SwapchainCreateInfoKHR,
+  TextureLodGatherFormatPropertiesAMD,
+  ValidationCacheCreateInfoEXT,
+  ValidationFeaturesEXT,
+  ValidationFlagsEXT,
+  WriteDescriptorSet,
+  WriteDescriptorSetAccelerationStructureNV,
+  WriteDescriptorSetInlineUniformBlockEXT,
+]
+
+### @@instance must be set before using any of these functions! ###
 module Vx
   extend self
   class_setter instance = Vk::Instance.null
