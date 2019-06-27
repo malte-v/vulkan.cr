@@ -26,7 +26,7 @@ require "vulkan"
 
 All the functions, structs, enums etc. are located inside `lib Vk`.
 
-`lib Vx` contains wrapper functions for Vulkan extensions so you never have to call vkGetInstanceProcAddr again. Note that structs, enums etc. related to extensions are still in `lib Vk`.
+`module Vx` contains wrapper functions for Vulkan extensions so you never have to call vkGetInstanceProcAddr again. Note that structs, enums etc. related to extensions are still in `lib Vk`.
 
 ## Contributing
 
