@@ -10,7 +10,7 @@ Current Vulkan version: 1.1.101.0
 
    ```yaml
    dependencies:
-     vez:
+     vulkan:
        github: malte-v/vulkan.cr
    ```
 
@@ -39,3 +39,8 @@ All the functions, structs, enums etc. are located inside `lib Vk`.
 ## Contributors
 
 - [malte-v](https://github.com/malte-v) - creator and maintainer
+
+## See also
+
+- [vez.cr](https://github.com/malte-v/vez.cr) - V-EZ bindings to Crystal
+- [vma.cr](https://github.com/malte-v/vma.cr) - VulkanMemoryAllocator bindings to Crystal
